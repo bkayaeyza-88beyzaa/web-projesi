@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eğitim & Akademi Portfolyom 🎓 | Kurslarım & Ders Linklerim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Üst Başlık & Ekleme Butonu -->
+        <header class="app-header">
+            <div class="brand">
+                <span class="logo">🎓</span>
+                <div>
+                    <h1>Eğitim & Akademi <span class="badge">PORTAL</span></h1>
+                    <p>Kayıtlı Kurslarım, Sertifikalarım & Ders Linklerim</p>
+                </div>
+            </div>
+            <button id="openModalBtn" class="btn btn-primary">➕ Yeni Eğitim Ekle</button>
+        </header>
+
+        <!-- Arama ve Platform Filtre Çubuğu -->
+        <div class="controls-bar">
+            <div class="search-wrap">
+                <span>🔍</span>
+                <input type="text" id="searchInput" placeholder="Eklediğiniz eğitimlerde, kurumlarda veya notlarda ara...">
+            </div>
+            <div class="filter-buttons" id="filterButtons">
+                <button class="filter-btn active" data-cat="all">Tümü</button>
+                <button class="filter-btn" data-cat="BTK Akademi">BTK Akademi</button>
+                <button class="filter-btn" data-cat="Udemy">Udemy</button>
+                <button class="filter-btn" data-cat="freeCodeCamp">freeCodeCamp</button>
+                <button class="filter-btn" data-cat="Turkcell">Turkcell</button>
+                <button class="filter-btn" data-cat="Coursera">Coursera</button>
+                <button class="filter-btn" data-cat="YouTube">YouTube</button>
+            </div>
+        </div>
+
+        <!-- Sayaç & İpucu -->
+        <div class="meta-bar">
+            <span id="cardCountText">Yükleniyor...</span>
+            <span class="hint">💡 <strong>"Derse Git ↗"</strong> butonuyla doğrudan ilgili kursun web sayfasına gidebilirsiniz.</span>
+        </div>
+
+        <!-- Sertifika / Eğitim Kartları Grid Alanı -->
+        <main id="cardGrid" class="card-grid"></main>
+
+        <!-- Alt Bilgi -->
+        <footer class="app-footer">
+            <p>Eğitim & Akademi • Kendi eğitimlerinizi ekleyip doğrudan ders sayfalarına ulaşabileceğiniz kişisel portfolyonuz.</p>
+        </footer>
+    </div>
+
+    <!-- Yeni Eğitim Ekleme Modalı -->
+    <div id="cardModal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Yeni Eğitim / Kurs Ekle</h3>
+                <button id="closeModalBtn" class="close-btn">✕</button>
+            </div>
+            <form id="cardForm">
+                <div class="form-group">
+                    <label for="termInput">Eğitim / Kurs Adı <span class="req">*</span></label>
+                    <input type="text" id="termInput" placeholder="Örn: Sıfırdan İleri Seviye Web Geliştirme" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="catInput">Eğitim Platformu / Kurum</label>
+                    <select id="catInput">
+                        <option value="BTK Akademi">BTK Akademi</option>
+                        <option value="Udemy">Udemy</option>
+                        <option value="freeCodeCamp">freeCodeCamp</option>
+                        <option value="Turkcell">Turkcell Geleceği Yazanlar</option>
+                        <option value="Coursera">Coursera</option>
+                        <option value="YouTube">YouTube</option>
+                        <option value="Patika.dev">Patika.dev</option>
+                        <option value="Diğer">Diğer Platform</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="urlInput">Ders / Kurs Linki (URL) 🔗 <span class="req">*</span></label>
+                    <input type="url" id="urlInput" placeholder="Örn: https://www.btkakademi.gov.tr/... veya udemy.com/course/..." required>
+                    <small class="hint-sub">Kartın üzerindeki butona basıldığında doğrudan bu sayfa açılır.</small>
+                </div>
+                <div class="form-group">
+                    <label for="defInput">Kazanılan Beceriler & Ders Notları <span class="req">*</span></label>
+                    <textarea id="defInput" rows="3" placeholder="Örn: HTML5 semantik etiketler, CSS Flexbox & Grid, responsive tasarım ve temel JS konuları öğrenildi." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="codeInput">Sertifika Kodu / Saat / Durum (İsteğe Bağlı)</label>
+                    <input type="text" id="codeInput" class="code-font" placeholder="Örn: Sertifika No: 123456 | 40 Saat">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="cancelBtn" class="btn btn-secondary">İptal</button>
+                    <button type="submit" class="btn btn-primary">Kaydet & Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
